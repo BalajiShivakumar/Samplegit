@@ -1,0 +1,35 @@
+@model Hospital
+@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+<link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet" />
+
+<div class="text-center col-lg-4">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <div class="form-group">
+        <label asp-for="FromTime" class="control-label"></label>
+        <input type="text" asp-for="FromTime" class="form-control" />
+        <span asp-validation-for="FromTime" class="text-danger"></span>
+    </div>
+
+</div>
+
+<script>
+    var timepicker = new TimePicker('FromTime', {
+        lang: 'en',
+        theme: 'light',
+        format: 'HH:mm'
+    });
+    timepicker.on('change', function (evt) {
+
+        var value = (evt.hour || '00') + ':' + ('00');
+        evt.element.value = value;
+
+    });
+    timepicker.on('open', function (evt) {
+        $("._jw-tpk-minute").hide();
+    });
+</script>
